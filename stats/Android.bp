@@ -21,18 +21,18 @@ package {
     default_applicable_licenses: ["Android-Apache-2.0"],
 }
 
-cc_library_host_static {
+cc_library_host_shared {
     name: "libstats_proto_host",
     srcs: [
         "atoms.proto",
         "atom_field_options.proto",
         "enums/**/*.proto",
+        "message/*.proto",
     ],
 
     proto: {
         type: "full",
         export_proto_headers: true,
-        static: true,
         include_dirs: [
             "external/protobuf/src",
         ],
@@ -59,5 +59,12 @@ filegroup {
     name: "libstats_atom_enum_protos",
     srcs: [
         "enums/**/*.proto",
+    ],
+}
+
+filegroup {
+    name: "libstats_atom_message_protos",
+    srcs: [
+        "message/*.proto",
     ],
 }
